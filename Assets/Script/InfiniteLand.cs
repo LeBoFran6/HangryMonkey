@@ -11,8 +11,10 @@ public class InfiniteLand : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        collision.transform.GetComponent<Rigidbody2D>().simulated = false;
-        collision.transform.position = newPosition.position;
-        collision.transform.GetComponent<Rigidbody2D>().simulated = true;
+        Rigidbody2D rb = collision.transform.GetComponent<Rigidbody2D>();
+        if (rb == null) return;
+        rb.simulated = false;
+        collision.transform.position = new Vector3(newPosition.position.x, rb.transform.position.y , newPosition.position.z);
+        rb.simulated = true;
     }
 }
