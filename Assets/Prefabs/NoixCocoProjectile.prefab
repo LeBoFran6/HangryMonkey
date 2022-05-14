@@ -116,9 +116,9 @@ MonoBehaviour:
   m_rb: {fileID: 2046953287532823804}
   m_spriteRenderer: {fileID: 1033735054654113142}
   m_sprite: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
-  m_layerCoco:
+  m_layerTeleport:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 512
   m_layerPlayer1:
     serializedVersion: 2
     m_Bits: 64
@@ -135,7 +135,7 @@ Rigidbody2D:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5550879451161289154}
   m_BodyType: 0
-  m_Simulated: 1
+  m_Simulated: 0
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 0.1

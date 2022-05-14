@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class PlayerController : MonoBehaviour
 {
@@ -27,6 +28,7 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField]
     private Transform m_currentCoco;
+    private Transform m_currentTargetMonster;
 
     [SerializeField]
     private List<Transform> m_listPointEatMonster;
@@ -63,7 +65,7 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         //m_speed.x = Input.GetAxisRaw("Horizontal");
-        
+
         if (m_isPlayerOne)
         {
             if (Input.GetKey(KeyCode.Q)) { MovePlayer(-1); };
@@ -109,8 +111,23 @@ public class PlayerController : MonoBehaviour
 
     private void ProjectForMonster()
     {
-        Transform go = m_listPointEatMonster[Random.Range(0, m_listPointEatMonster.Count - 1)];
+        List<Transform> m_currentTargetMonsterList = new List<Transform>();
+        Transform transformCoco = m_listPointEatMonster[Random.Range(0, m_listPointEatMonster.Count - 1)];
+        
+        m_currentCoco.parent = null;
 
+        Vector3 dirCoco = (transformCoco.position - m_currentCoco.position).normalized;
+        
+        GameObject go = Instantiate(m_cocoLaunch);
+        go.transform.position = m_currentCoco.position;
+
+        Rigidbody2D rbCoco = go.GetComponent<Rigidbody2D>();
+
+        rbCoco.simulated = true;
+
+        rbCoco.gravityScale = 0;
+
+        rbCoco.AddRelativeForce(dirCoco * 100);
 
     }
 
@@ -119,13 +136,13 @@ public class PlayerController : MonoBehaviour
         GameObject go = Instantiate(m_cocoLaunch);
         go.transform.position = m_currentCoco.position;
 
-        
         m_currentCoco.gameObject.SetActive(false);
         m_currentCoco = null;
 
         go.GetComponent<Coco>().SetLayerThrowPlayer(gameObject.layer);
 
         Rigidbody2D rbCoco = go.GetComponent<Rigidbody2D>();
+        rbCoco.simulated = true;
         rbCoco.AddRelativeForce(m_projectionSpeed);
     }
 
