@@ -8,6 +8,7 @@ public class Timer : MonoBehaviour
     public float timeRemaining = 180;
     public bool timerIsRunning = false;
     public TextMeshProUGUI timeText;
+    public Monster m_monster;
 
 
     private void Start()
@@ -24,6 +25,12 @@ public class Timer : MonoBehaviour
                 timeRemaining -= UnityEngine.Time.deltaTime;
                 DisplayTime(timeRemaining);
             }
+
+            if (timeRemaining > 29.5f && timeRemaining < 30.5f)
+            {
+                m_monster.Rage = true;
+            }
+
             if (timeRemaining < 0)
             {
                 Debug.Log("Time has run out!");

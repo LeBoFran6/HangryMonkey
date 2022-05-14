@@ -18,6 +18,7 @@ public class Monster : MonoBehaviour
     public bool Rage = false;
     public bool Slap = false;
     public bool RRRR = false;
+    public bool canEat = true;
     public GameObject NoomText;
 
     public GameObject SpawnerManager;
@@ -34,46 +35,37 @@ public class Monster : MonoBehaviour
 
     void Update()
     {
+
+        if (!canEat) return;
+
         FeedingBar.value = FeedingBar.value - 5 * Time.deltaTime;
 
+        if (FeedingBar.value <= 0)
+        {
+            Slap = true;
+        }
 
         if (Timer > -1)
         {
             Timer = Timer + 1 * Time.deltaTime;
             Bouche.SetActive(false);
         }
+
         if (Timer > 1)
         {
             Bouche.SetActive(true);
+            PasDeBouche.SetActive(false);
             NoomText.SetActive(false);
-        }
-
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            Slap = true;
-            Debug.Log("STARTSlap");
-        }
-
-        if (Slap == true)
-        {
-            MonkeySlap();
-        }
-
-
-        if (Input.GetKeyDown("space"))
-        {
-            Rage = true;
-                Debug.Log("GORage");
-        }
-        if (Input.GetKeyDown(KeyCode.C))
-        {
-            Rage = false;
-            Debug.Log("NORage");
         }
 
         if (Rage == true)
         {
             RageMode();
+        }
+
+        if (Slap == true)
+        {
+            MonkeySlap();
         }
 
         if (RRRR == true)
@@ -86,6 +78,7 @@ public class Monster : MonoBehaviour
     {
         FeedingBar.value = FeedingBar.value  + 5;
         Bouche.SetActive(false);
+        PasDeBouche.SetActive(true);
         NoomText.SetActive(true);
         Timer = 0;
         SpawnerManager.GetComponent<SpawnersManager>().fruitsC -= 1;
@@ -95,6 +88,7 @@ public class Monster : MonoBehaviour
     {
         if (Timer2 > -1)
         {
+            Debug.Log("StartSlap");
             Timer2 = Timer2 + 1 * Time.deltaTime;
             SLAPText.SetActive(true);
             SlapSprite.SetActive(true);
@@ -116,7 +110,6 @@ public class Monster : MonoBehaviour
 
     public void RageMode()
     {
-        Debug.Log("Rage");
         Bouche.SetActive(false);
         if (Timer2 > -1)
         {
