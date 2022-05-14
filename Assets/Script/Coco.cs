@@ -19,6 +19,7 @@ public class Coco : MonoBehaviour
     [SerializeField]
     private LayerMask m_layerPlayer2;
     private LayerMask m_layerOtherPlayer;
+    private Transform m_otherPlayer;
     [SerializeField]
     private float m_waitHideValue;
 
@@ -35,15 +36,25 @@ public class Coco : MonoBehaviour
     {
         if((m_layerOtherPlayer.value != collision.transform.gameObject.layer) && m_throw && (m_layerTeleport.value & (1 << collision.transform.gameObject.layer)) <= 0)
         {
-            Debug.Log(m_layerOtherPlayer.value + " " + collision.transform.gameObject.layer);
             Explosion();
+        }
+
+        if (m_otherPlayer != null && m_otherPlayer != collision.transform)
+        {
+            
+            PlayerController pc = collision.transform.GetComponent<PlayerController>();
+            if (pc == null) return;
+            Debug.Log("Stun" + pc.name);
+            Debug.Log(1 << pc.gameObject.layer);
+            StartCoroutine(pc.Stun());
         }
     }
 
-    public void SetLayerThrowPlayer(int p_layer)
+    public void SetLayerThrowPlayer(LayerMask p_layer, Transform p_trans)
     {
         m_throw = true;
-        m_layerOtherPlayer = p_layer;
+        m_layerOtherPlayer.value = p_layer.value;
+        m_otherPlayer = p_trans;
     }
 
     private void Explosion()

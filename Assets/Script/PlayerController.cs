@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using System.Collections;
 
 public class PlayerController : MonoBehaviour
 {
@@ -139,7 +140,7 @@ public class PlayerController : MonoBehaviour
         m_currentCoco.gameObject.SetActive(false);
         m_currentCoco = null;
 
-        go.GetComponent<Coco>().SetLayerThrowPlayer(gameObject.layer);
+        go.GetComponent<Coco>().SetLayerThrowPlayer(gameObject.layer, transform);
 
         Rigidbody2D rbCoco = go.GetComponent<Rigidbody2D>();
         rbCoco.simulated = true;
@@ -171,11 +172,22 @@ public class PlayerController : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         m_canJump = true;
+
+        
     }
 
     private void FixedUpdate()
     {
         m_rb.AddForce(m_speed * Time.fixedDeltaTime, ForceMode2D.Impulse);
+    }
+
+    public IEnumerator Stun()
+    {
+        m_speed.x /= 2;
+        m_jumpSpeed.y /= 2;
+        yield return new WaitForSeconds(3f);
+        m_speed.x *= 2;
+        m_jumpSpeed.y *= 2;
     }
 
     private void MovePlayer(float p_dir)
