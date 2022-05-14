@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class Monster : MonoBehaviour
 {
@@ -20,6 +21,8 @@ public class Monster : MonoBehaviour
     public bool RRRR = false;
     public bool canEat = true;
     public GameObject NoomText;
+
+    public List<Transform> listVignettePoint;
 
     public GameObject SpawnerManager;
     public GameObject SLAPText;
@@ -85,6 +88,10 @@ public class Monster : MonoBehaviour
         FeedingBar.value = FeedingBar.value  + 5;
         Bouche.SetActive(false);
         PasDeBouche.SetActive(true);
+        Transform trans = listVignettePoint[Random.Range(0, listVignettePoint.Count - 1)];
+        NoomText.transform.position = trans.position;
+        NoomText.transform.rotation = trans.rotation;
+        NoomText.transform.DOShakeRotation(0.5f,15,30);
         NoomText.SetActive(true);
         Timer = 0;
         SpawnerManager.GetComponent<SpawnersManager>().fruitsC -= 1;
@@ -92,12 +99,20 @@ public class Monster : MonoBehaviour
 
     public void MonkeySlap()
     {
-        if (Timer2 > -1)
+        if (Timer2 > -1 )
         {
             Debug.Log("StartSlap");
             Timer2 = Timer2 + 1 * Time.deltaTime;
-            SLAPText.SetActive(true);
-            SlapSprite.SetActive(true);
+            
+            if (!SLAPText.activeSelf)
+            {
+                Transform trans = listVignettePoint[Random.Range(0, listVignettePoint.Count - 1)];
+                SLAPText.transform.position = trans.position;
+                SLAPText.transform.rotation = trans.rotation;
+                SLAPText.transform.DOShakeRotation(0.5f, 15, 30);
+                SLAPText.SetActive(true);
+                SlapSprite.SetActive(true);
+            }
         }
         if (Timer2 > 0.5)
         {
@@ -109,7 +124,6 @@ public class Monster : MonoBehaviour
         }
 
         FeedingBar.value = 100;
-
 
     }
 
@@ -143,8 +157,13 @@ public class Monster : MonoBehaviour
         if (Timer3 > -1)
         {
             Timer3 = Timer3 + 1 * Time.deltaTime;
+            Transform trans = listVignettePoint[Random.Range(0, listVignettePoint.Count - 1)];
+            RRRRText.transform.position = trans.position;
+            RRRRText.transform.rotation = trans.rotation;
+            RRRRText.transform.DOShakeRotation(0.5f, 15, 30);
             RRRRText.SetActive(true);
         }
+
         if (Timer3 > 2)
         {
             RRRRText.SetActive(false);
