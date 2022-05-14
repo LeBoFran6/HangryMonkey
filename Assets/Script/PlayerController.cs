@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,6 +14,9 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField]
     private Rigidbody2D m_rb;
+
+    [SerializeField]
+    private GameObject m_cocoLaunch;
 
     [SerializeField]
     private SpriteRenderer m_sprite;
@@ -33,10 +37,15 @@ public class PlayerController : MonoBehaviour
     private float m_SpeedMovement;
 
     [SerializeField]
+    private Vector2 m_projectionSpeed;
+
+    [SerializeField]
     private Vector2 m_jumpSpeed;
 
     [SerializeField]
     private float m_collideGravityValue;
+
+    private float m_throwValue;
 
     private Vector3 m_collideGravity;
 
@@ -62,6 +71,9 @@ public class PlayerController : MonoBehaviour
             if (Input.GetKeyUp(KeyCode.D)) { MovePlayer(0); };
 
             if (Input.GetKeyDown(KeyCode.Z) && m_canJump) { JumpPlayer(); };
+
+            if (Input.GetKeyDown(KeyCode.Space)) { m_throwValue = Time.time; };
+            if (Input.GetKeyUp(KeyCode.Space)) { ThrowCoco(); };
             return;
         }
 
@@ -72,19 +84,52 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.UpArrow) && m_canJump) { JumpPlayer(); };
 
+        if (Input.GetKeyDown(KeyCode.KeypadEnter)) { m_throwValue = Time.time; };
+        if (Input.GetKeyUp(KeyCode.KeypadEnter)) { ThrowCoco(); };
 
-        if (!m_canJump)
-        {
-            transform.position -= m_collideGravity * Time.deltaTime;
-        }
     }
+
+    private void ThrowCoco()
+    {
+        if (m_currentCoco == null) return;
+        float timeValue = Time.time - m_throwValue;
+        if (timeValue > 1)
+        {
+            ProjectForMonster();
+            m_throwValue = 0;
+            return;
+        }
+        Debug.Log("Donner a manger au monstre" + timeValue);
+
+        ProjectForPlayer();
+
+        m_throwValue = 0;
+    }
+
+    private void ProjectForMonster()
+    {
+
+    }
+
+    private void ProjectForPlayer()
+    {
+        GameObject go = Instantiate(m_cocoLaunch);
+        go.transform.position = m_currentCoco.position;
+
+        
+        m_currentCoco.gameObject.SetActive(false);
+        m_currentCoco = null;
+
+        go.GetComponent<Coco>().SetLayerThrowPlayer(gameObject.layer);
+
+        Rigidbody2D rbCoco = go.GetComponent<Rigidbody2D>();
+        rbCoco.AddRelativeForce(m_projectionSpeed);
+    }
+
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if((m_layerSol.value & ( 1 << other.transform.gameObject.layer )) > 0)
-        {
-            m_canJump = true;
-        }
+        
         if((m_layerCoco.value & ( 1 << other.transform.gameObject.layer )) > 0 && m_currentCoco == null)
         {
             m_currentCoco = other.transform;
@@ -99,7 +144,13 @@ public class PlayerController : MonoBehaviour
             }
 
             other.transform.position = m_rightSlot.position;
+            other.transform.localScale /= 2;
         }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        m_canJump = true;
     }
 
     private void FixedUpdate()
@@ -110,18 +161,27 @@ public class PlayerController : MonoBehaviour
     private void MovePlayer(float p_dir)
     {
         m_speed.x = p_dir * m_SpeedMovement;
+
+        
         if (p_dir == 0) return;
+
+        m_projectionSpeed.x *= p_dir;
 
         if (p_dir > 0)
         {
+            m_projectionSpeed.x = Mathf.Abs(m_projectionSpeed.x);
+
             m_sprite.flipX = false;
             SetPosCoco(m_rightSlot);
             return;
         }
 
+
         m_sprite.flipX = true;
         SetPosCoco(m_leftSlot);
 
+        if (m_projectionSpeed.x < 0) return;
+        m_projectionSpeed.x *= p_dir;
     }
 
     private void SetPosCoco(Transform p_trans)
