@@ -62,14 +62,16 @@ public class Monster : MonoBehaviour
 
         if (Input.GetKeyDown("space"))
         {
-            if(Sleep == false)
-            {
                 Sleep = true;
                 Debug.Log("GOsleep");
-            }
+        }
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            Sleep = false;
+            Debug.Log("NOsleep");
         }
 
-        if(Sleep == true)
+        if (Sleep == true)
         {
             SleepMode();
         }
@@ -101,7 +103,7 @@ public class Monster : MonoBehaviour
             Slap = false;
         }
         //retire une vie a chaque joueure
-        ////remet le barre au max 
+        FeedingBar.value = 100;
     }
 
     public void SleepMode()
