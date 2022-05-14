@@ -29,7 +29,11 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField]
     private Transform m_currentCoco;
+
     private Transform m_currentTargetMonster;
+
+    [SerializeField]
+    private SpawnersManager m_spawnerManager;
 
     [SerializeField]
     private List<Transform> m_listPointEatMonster;
@@ -53,6 +57,7 @@ public class PlayerController : MonoBehaviour
 
     private Vector3 m_collideGravity;
 
+    private int m_HP = 3;
 
     private bool m_canJump = true;
 
@@ -81,12 +86,12 @@ public class PlayerController : MonoBehaviour
             return;
         }
 
-        if (Input.GetKey(KeyCode.RightArrow)) { MovePlayer(1); };
-        if (Input.GetKeyUp(KeyCode.RightArrow)) { MovePlayer(0); };
-        if (Input.GetKey(KeyCode.LeftArrow)) { MovePlayer(-1); };
-        if (Input.GetKeyUp(KeyCode.LeftArrow)) { MovePlayer(0); };
+        if (Input.GetKey(KeyCode.Keypad6)) { MovePlayer(1); };
+        if (Input.GetKeyUp(KeyCode.Keypad6)) { MovePlayer(0); };
+        if (Input.GetKey(KeyCode.Keypad4)) { MovePlayer(-1); };
+        if (Input.GetKeyUp(KeyCode.Keypad4)) { MovePlayer(0); };
 
-        if (Input.GetKeyDown(KeyCode.UpArrow) && m_canJump) { JumpPlayer(); };
+        if (Input.GetKeyDown(KeyCode.Keypad8) && m_canJump) { JumpPlayer(); };
 
         if (Input.GetKeyDown(KeyCode.KeypadEnter)) { m_throwValue = Time.time; };
         if (Input.GetKeyUp(KeyCode.KeypadEnter)) { ThrowCoco(); };
@@ -104,7 +109,7 @@ public class PlayerController : MonoBehaviour
             return;
         }
         Debug.Log("Donner a manger au monstre" + timeValue);
-
+        m_spawnerManager.GetComponent<SpawnersManager>().fruitsC -= 1;
         ProjectForPlayer();
 
         m_throwValue = 0;
@@ -157,27 +162,27 @@ public class PlayerController : MonoBehaviour
         
         if((m_layerCoco.value & ( 1 << other.transform.gameObject.layer )) > 0 && m_currentCoco == null)
         {
-            m_currentCoco = other.transform;
+            m_currentCoco = other.transform.GetComponent<GetCoco>().m_coco;
+            m_currentCoco.parent = null;
 
-            other.transform.GetComponent<CircleCollider2D>().enabled = false;
+            m_currentCoco.transform.GetComponent<CircleCollider2D>().enabled = false;
 
-            other.transform.SetParent(transform);
+            m_currentCoco.transform.SetParent(transform);
 
             if (m_sprite.flipX)
             {
-                other.transform.position = m_leftSlot.position;
+                m_currentCoco.transform.position = m_leftSlot.position;
             }
 
-            other.transform.position = m_rightSlot.position;
-            other.transform.localScale /= 2;
+            m_currentCoco.transform.position = m_rightSlot.position;
+            m_currentCoco.transform.localScale /= 2;
+            Destroy(other.gameObject);
         }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         m_canJump = true;
-
-        
     }
 
     private void FixedUpdate()
@@ -212,7 +217,6 @@ public class PlayerController : MonoBehaviour
             return;
         }
 
-
         m_sprite.flipX = true;
         SetPosCoco(m_leftSlot);
 
@@ -224,6 +228,21 @@ public class PlayerController : MonoBehaviour
     {
         if (m_currentCoco == null) return;
         m_currentCoco.position = p_trans.position;
+    }
+
+    public void GetDamage(int p_less)
+    {
+        m_HP -= p_less;
+
+        if(m_HP <= 0)
+        {
+            DisplayWinScreen();
+        }
+    }
+
+    private void DisplayWinScreen()
+    {
+
     }
 
     private void JumpPlayer()

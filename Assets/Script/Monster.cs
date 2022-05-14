@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class Monster : MonoBehaviour
 {
+    public PlayerController Player1;
+    public PlayerController Player2;
     public Slider FeedingBar;
     public GameObject Bouche;
     public GameObject PasDeBouche;
@@ -35,8 +37,6 @@ public class Monster : MonoBehaviour
         FeedingBar.value = FeedingBar.value - 5 * Time.deltaTime;
 
 
-
-
         if (Timer > -1)
         {
             Timer = Timer + 1 * Time.deltaTime;
@@ -47,10 +47,6 @@ public class Monster : MonoBehaviour
             Bouche.SetActive(true);
             NoomText.SetActive(false);
         }
-
-
-
-
 
         if (Input.GetKeyDown(KeyCode.F))
         {
@@ -114,6 +110,8 @@ public class Monster : MonoBehaviour
         FeedingBar.value = 100;
 
         //retire une vie a chaque joueure
+        Player1.GetDamage(1);
+        Player2.GetDamage(1);
     }
 
     public void RageMode()
