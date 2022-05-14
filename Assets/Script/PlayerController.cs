@@ -1,5 +1,3 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -29,6 +27,9 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField]
     private Transform m_currentCoco;
+
+    [SerializeField]
+    private List<Transform> m_listPointEatMonster;
 
     [SerializeField]
     private bool m_isPlayerOne;
@@ -108,6 +109,8 @@ public class PlayerController : MonoBehaviour
 
     private void ProjectForMonster()
     {
+        Transform go = m_listPointEatMonster[Random.Range(0, m_listPointEatMonster.Count - 1)];
+
 
     }
 
