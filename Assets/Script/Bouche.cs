@@ -9,7 +9,7 @@ public class Bouche : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Destroy(other);
+        Destroy(other.transform.gameObject);
         MonsterScript.GetComponent<Monster>().FeedMonster();
         Debug.Log("NOOOM");
     }

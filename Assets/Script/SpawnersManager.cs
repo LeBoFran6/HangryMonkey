@@ -9,6 +9,10 @@ public class SpawnersManager : MonoBehaviour
     public float randomS;
     public float fruitsC ;
 
+    public Transform Spawner0;
+    public Transform Spawner1;
+    public Transform Spawner2;
+
     public GameObject myPrefab;
 
     void Start()
@@ -26,28 +30,28 @@ public class SpawnersManager : MonoBehaviour
         }
         if(randomNumber < 0)
         {
-            if (randomNumber < 0)
+            if (randomSpawner < 0)
             {
                 randomS = Random.Range(0f, 1f);
-                Instantiate(myPrefab, new Vector3(8f + randomS, 8f , 0f), Quaternion.identity);
+                Instantiate(myPrefab, new Vector3( randomS + Spawner0.position.x, 8f , 0f), Quaternion.identity);
                 fruitsC++;
                 randomNumber = Random.Range(2f, 6f);
                 randomSpawner = Random.Range(0f, 3f);
                 Debug.Log("0");
             }
-            if (randomNumber < 1)
+            if (randomSpawner < 1)
             {
                 randomS = Random.Range(0f, 1f);
-                Instantiate(myPrefab,  new Vector3(10f + randomS, 8f , 0f), Quaternion.identity);
+                Instantiate(myPrefab,  new Vector3(randomS + Spawner1.position.x, 8f , 0f), Quaternion.identity);
                 fruitsC++;
                 randomNumber = Random.Range(2f, 6f);
                 randomSpawner = Random.Range(0f, 3f);
                 Debug.Log("1");
             }
-            if ( randomNumber < 2)
+            if (randomSpawner < 2)
             {
                 randomS = Random.Range(0f, 1f);
-                Instantiate(myPrefab,  new Vector3(12f + randomS, 8f, 0f), Quaternion.identity);
+                Instantiate(myPrefab,  new Vector3(randomS + Spawner2.position.x, 8f, 0f), Quaternion.identity);
                 fruitsC++;
                 randomNumber = Random.Range(2f, 6f);
                 randomSpawner = Random.Range(0f, 3f);

@@ -7,16 +7,20 @@ public class Monster : MonoBehaviour
 {
     public Slider FeedingBar;
     public GameObject Bouche;
+    public GameObject PasDeBouche;
     public GameObject SlapSprite;
     public float Timer = 0;
     public float Timer2 = 0;
+    public float Timer3 = 0;
     public bool BoucheOuverte = true;
-    public bool Sleep = false;
+    public bool Rage = false;
     public bool Slap = false;
+    public bool RRRR = false;
     public GameObject NoomText;
 
     public GameObject SpawnerManager;
     public GameObject SLAPText;
+    public GameObject RRRRText;
 
 
     void Start()
@@ -51,7 +55,7 @@ public class Monster : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.F))
         {
             Slap = true;
-            Debug.Log("STARTslap");
+            Debug.Log("STARTSlap");
         }
 
         if (Slap == true)
@@ -62,18 +66,23 @@ public class Monster : MonoBehaviour
 
         if (Input.GetKeyDown("space"))
         {
-                Sleep = true;
-                Debug.Log("GOsleep");
+            Rage = true;
+                Debug.Log("GORage");
         }
         if (Input.GetKeyDown(KeyCode.C))
         {
-            Sleep = false;
-            Debug.Log("NOsleep");
+            Rage = false;
+            Debug.Log("NORage");
         }
 
-        if (Sleep == true)
+        if (Rage == true)
         {
-            SleepMode();
+            RageMode();
+        }
+
+        if (RRRR == true)
+        {
+            CocoNotIeaten();
         }
     }
 
@@ -102,26 +111,55 @@ public class Monster : MonoBehaviour
             Debug.Log("ENDslap");
             Slap = false;
         }
-        //retire une vie a chaque joueure
         FeedingBar.value = 100;
+
+        //retire une vie a chaque joueure
     }
 
-    public void SleepMode()
+    public void RageMode()
     {
-        Debug.Log("sleep");
+        Debug.Log("Rage");
         Bouche.SetActive(false);
         if (Timer2 > -1)
         {
             Timer2 = Timer2 + 1 * Time.deltaTime;
             Bouche.SetActive(false);
+            PasDeBouche.SetActive(true);
         }
-        if (Timer2 > 4)
+        if (Timer2 > 1)
         {
+            PasDeBouche.SetActive(false);
             Bouche.SetActive(true);
+            
         }
-        if (Timer2 > 6)
+        if (Timer2 > 2.5)
         {
             Timer2 = 0;
         }
+    }
+
+    public void CocoNotIeaten()
+    {
+        Debug.Log("CocoNotIeaten");
+        PasDeBouche.SetActive(false);
+        RRRR = true;
+        
+        if (Timer3 > -1)
+        {
+            Timer3 = Timer3 + 1 * Time.deltaTime;
+            RRRRText.SetActive(true);
+        }
+        if (Timer3 > 2)
+        {
+            RRRRText.SetActive(false);
+            Timer3 = 0;
+            RRRR = false;
+        }
+        
+    }
+
+    public void rrrrDamage()
+    {
+        FeedingBar.value = FeedingBar.value - 5;
     }
 }
