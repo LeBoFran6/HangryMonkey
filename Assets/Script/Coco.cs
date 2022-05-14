@@ -25,6 +25,8 @@ public class Coco : MonoBehaviour
 
     bool m_throw;
 
+    private Coroutine m_stunRoutine;
+
     private WaitForSeconds m_waitHide;
 
     private void Awake()
@@ -45,7 +47,8 @@ public class Coco : MonoBehaviour
             PlayerController pc = collision.transform.GetComponent<PlayerController>();
             if (pc == null) return;
             pc.m_score.RemovePoint();
-            StartCoroutine(pc.Stun());
+            if(m_stunRoutine != null) StopCoroutine(m_stunRoutine);
+            m_stunRoutine = StartCoroutine(pc.Stun());
         }
     }
 
