@@ -18,7 +18,7 @@ public class Monster : MonoBehaviour
     public bool Rage = false;
     public bool Slap = false;
     public bool RRRR = false;
-    public bool canEat = false;
+    public bool canEat = true;
     public GameObject NoomText;
 
     public GameObject SpawnerManager;
@@ -54,6 +54,7 @@ public class Monster : MonoBehaviour
         if (Timer > 1)
         {
             Bouche.SetActive(true);
+            PasDeBouche.SetActive(false);
             NoomText.SetActive(false);
         }
 
@@ -77,6 +78,7 @@ public class Monster : MonoBehaviour
     {
         FeedingBar.value = FeedingBar.value  + 5;
         Bouche.SetActive(false);
+        PasDeBouche.SetActive(true);
         NoomText.SetActive(true);
         Timer = 0;
         SpawnerManager.GetComponent<SpawnersManager>().fruitsC -= 1;

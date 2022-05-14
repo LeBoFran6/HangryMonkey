@@ -144,7 +144,7 @@ PrefabInstance:
       objectReference: {fileID: 2057891448}
     - target: {fileID: 6881133151368158370, guid: f1846a1f4aa35194a9f171084df89fb7, type: 3}
       propertyPath: timeRemaining
-      value: 31
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 6881133151368158370, guid: f1846a1f4aa35194a9f171084df89fb7, type: 3}
       propertyPath: timerIsRunning
@@ -330,7 +330,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6454373728352326277, guid: 897d56264ced7a347a6cc83d82767acc, type: 3}
   m_PrefabInstance: {fileID: 2057891447}
   m_PrefabAsset: {fileID: 0}
---- !u!58 &160931907
+--- !u!58 &160931911
 CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -859,20 +859,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4146414437584654182, guid: f5a32dfa3fdd2074baa93d61e198d2a7, type: 3}
       propertyPath: m_listPointEatMonster.Array.size
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4146414437584654182, guid: f5a32dfa3fdd2074baa93d61e198d2a7, type: 3}
       propertyPath: m_listPointEatMonster.Array.data[0]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1412481352}
     - target: {fileID: 4146414437584654182, guid: f5a32dfa3fdd2074baa93d61e198d2a7, type: 3}
       propertyPath: m_listPointEatMonster.Array.data[1]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 94400305}
     - target: {fileID: 4146414437584654182, guid: f5a32dfa3fdd2074baa93d61e198d2a7, type: 3}
       propertyPath: m_listPointEatMonster.Array.data[2]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1019099058}
+    - target: {fileID: 4146414437584654182, guid: f5a32dfa3fdd2074baa93d61e198d2a7, type: 3}
+      propertyPath: m_listPointEatMonster.Array.data[3]
+      value: 
+      objectReference: {fileID: 928247690}
+    - target: {fileID: 4146414437584654182, guid: f5a32dfa3fdd2074baa93d61e198d2a7, type: 3}
+      propertyPath: m_listPointEatMonster.Array.data[4]
+      value: 
+      objectReference: {fileID: 1087627960}
     - target: {fileID: 8957331865859837897, guid: f5a32dfa3fdd2074baa93d61e198d2a7, type: 3}
       propertyPath: m_Layer
       value: 7
@@ -1527,6 +1535,14 @@ PrefabInstance:
       propertyPath: m_Color.a
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6454373728352326274, guid: 897d56264ced7a347a6cc83d82767acc, type: 3}
+      propertyPath: m_playerlayer.m_Bits
+      value: 64
+      objectReference: {fileID: 0}
+    - target: {fileID: 6454373728352326274, guid: 897d56264ced7a347a6cc83d82767acc, type: 3}
+      propertyPath: m_playerlayer2.m_Bits
+      value: 128
+      objectReference: {fileID: 0}
     - target: {fileID: 6454373728352326277, guid: 897d56264ced7a347a6cc83d82767acc, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -1538,6 +1554,10 @@ PrefabInstance:
     - target: {fileID: 6454373729112460032, guid: 897d56264ced7a347a6cc83d82767acc, type: 3}
       propertyPath: m_playerlayer2.m_Bits
       value: 128
+      objectReference: {fileID: 0}
+    - target: {fileID: 6454373730228754652, guid: 897d56264ced7a347a6cc83d82767acc, type: 3}
+      propertyPath: canEat
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6454373730228754652, guid: 897d56264ced7a347a6cc83d82767acc, type: 3}
       propertyPath: Player1
