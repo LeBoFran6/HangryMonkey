@@ -18,7 +18,22 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private Vector2 m_jumpSpeed;
 
+    [SerializeField]
+    private float m_collideGravityValue;
+
+    private Vector3 m_collideGravity;
+
+    [SerializeField]
+    private LayerMask m_layerSol;
+
+    private bool m_canJump = true;
+
     private Vector2 m_speed = new Vector2(0,0);
+
+    private void Awake()
+    {
+        m_collideGravity.y = m_collideGravityValue;
+    }
 
     private void Update()
     {
@@ -31,7 +46,7 @@ public class PlayerController : MonoBehaviour
             if (Input.GetKey(KeyCode.D)) { MovePlayer(1); };
             if (Input.GetKeyUp(KeyCode.D)) { MovePlayer(0); };
 
-            if (Input.GetKeyDown(KeyCode.Z)) { JumpPlayer(); };
+            if (Input.GetKeyDown(KeyCode.Z) && m_canJump) { JumpPlayer(); };
             return;
         }
 
@@ -39,7 +54,22 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.RightArrow)) { MovePlayer(0); };
         if (Input.GetKey(KeyCode.LeftArrow)) { MovePlayer(-1); };
         if (Input.GetKeyUp(KeyCode.LeftArrow)) { MovePlayer(0); };
-        if (Input.GetKeyDown(KeyCode.UpArrow)) { JumpPlayer(); };
+
+        if (Input.GetKeyDown(KeyCode.UpArrow) && m_canJump) { JumpPlayer(); };
+
+
+        if (!m_canJump)
+        {
+            transform.position -= m_collideGravity * Time.deltaTime;
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if((m_layerSol.value & ( 1 << other.transform.gameObject.layer )) > 0)
+        {
+            m_canJump = true;
+        }
     }
 
     private void FixedUpdate()
@@ -54,6 +84,7 @@ public class PlayerController : MonoBehaviour
 
     private void JumpPlayer()
     {
-        m_rb.AddForce(m_jumpSpeed, ForceMode2D.Impulse);
+        m_canJump = false;
+        m_rb.velocity = m_jumpSpeed;
     }
 }
