@@ -5,9 +5,26 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
 
+    [SerializeField]
+    private LayerMask m_layerSol;
+
+    [SerializeField]
+    private LayerMask m_layerCoco;
 
     [SerializeField]
     private Rigidbody2D m_rb;
+
+    [SerializeField]
+    private SpriteRenderer m_sprite;
+    
+    [SerializeField]
+    private Transform m_rightSlot;
+    
+    [SerializeField]
+    private Transform m_leftSlot;
+
+    [SerializeField]
+    private Transform m_currentCoco;
 
     [SerializeField]
     private bool m_isPlayerOne;
@@ -23,8 +40,6 @@ public class PlayerController : MonoBehaviour
 
     private Vector3 m_collideGravity;
 
-    [SerializeField]
-    private LayerMask m_layerSol;
 
     private bool m_canJump = true;
 
@@ -70,6 +85,21 @@ public class PlayerController : MonoBehaviour
         {
             m_canJump = true;
         }
+        if((m_layerCoco.value & ( 1 << other.transform.gameObject.layer )) > 0 && m_currentCoco == null)
+        {
+            m_currentCoco = other.transform;
+
+            other.transform.GetComponent<CircleCollider2D>().enabled = false;
+
+            other.transform.SetParent(transform);
+
+            if (m_sprite.flipX)
+            {
+                other.transform.position = m_leftSlot.position;
+            }
+
+            other.transform.position = m_rightSlot.position;
+        }
     }
 
     private void FixedUpdate()
@@ -80,6 +110,24 @@ public class PlayerController : MonoBehaviour
     private void MovePlayer(float p_dir)
     {
         m_speed.x = p_dir * m_SpeedMovement;
+        if (p_dir == 0) return;
+
+        if (p_dir > 0)
+        {
+            m_sprite.flipX = false;
+            SetPosCoco(m_rightSlot);
+            return;
+        }
+
+        m_sprite.flipX = true;
+        SetPosCoco(m_leftSlot);
+
+    }
+
+    private void SetPosCoco(Transform p_trans)
+    {
+        if (m_currentCoco == null) return;
+        m_currentCoco.position = p_trans.position;
     }
 
     private void JumpPlayer()
