@@ -112,6 +112,7 @@ public class PlayerController : MonoBehaviour
 
     private void ProjectForMonster()
     {
+
         List<Transform> m_currentTargetMonsterList = new List<Transform>();
         Transform transformCoco = m_listPointEatMonster[Random.Range(0, m_listPointEatMonster.Count - 1)];
         
@@ -121,6 +122,9 @@ public class PlayerController : MonoBehaviour
         
         GameObject go = Instantiate(m_cocoLaunch);
         go.transform.position = m_currentCoco.position;
+
+        m_currentCoco.gameObject.SetActive(false);
+        m_currentCoco = null;
 
         Rigidbody2D rbCoco = go.GetComponent<Rigidbody2D>();
 
