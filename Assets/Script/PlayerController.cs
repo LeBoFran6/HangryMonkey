@@ -25,12 +25,18 @@ public class PlayerController : MonoBehaviour
     private Transform m_rightSlot;
     
     [SerializeField]
+    private Transform m_stunPicture;
+    
+    [SerializeField]
     private Transform m_leftSlot;
 
     [SerializeField]
     private Transform m_currentCoco;
 
     private Transform m_currentTargetMonster;
+
+    [SerializeField]
+    public Score m_score;
 
     [SerializeField]
     private SpawnersManager m_spawnerManager;
@@ -60,12 +66,14 @@ public class PlayerController : MonoBehaviour
     private float m_collideGravityValue;
 
     private float m_throwValue;
+    private float m_speedMultiplier = 1;
 
     private Vector3 m_collideGravity;
 
     private int m_HP = 3;
 
     private bool m_pause;
+    private bool m_rotateStun;
 
     private bool m_canJump = true;
 
@@ -74,6 +82,7 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         m_collideGravity.y = m_collideGravityValue;
+        m_stunPicture.gameObject.SetActive(false);
     }
 
     private void Update()
@@ -81,6 +90,9 @@ public class PlayerController : MonoBehaviour
         //m_speed.x = Input.GetAxisRaw("Horizontal");
 
         if (m_pause) return;
+
+        if (m_rotateStun) m_stunPicture.Rotate(Vector3.forward);
+        
 
         if (m_isPlayerOne)
         {
@@ -106,13 +118,15 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.KeypadEnter)) { m_throwValue = Time.time; };
         if (Input.GetKeyUp(KeyCode.KeypadEnter)) { ThrowCoco(); };
 
+        
+
     }
 
     private void ThrowCoco()
     {
         if (m_currentCoco == null) return;
         float timeValue = Time.time - m_throwValue;
-        if (timeValue > 1)
+        if (timeValue > 0.5f)
         {
             ProjectForMonster();
             m_throwValue = 0;
@@ -148,6 +162,8 @@ public class PlayerController : MonoBehaviour
         rbCoco.gravityScale = 0;
 
         rbCoco.AddRelativeForce(dirCoco * 100);
+
+        m_score.AddScore();
 
     }
 
@@ -202,16 +218,20 @@ public class PlayerController : MonoBehaviour
 
     public IEnumerator Stun()
     {
-        m_speed.x /= 2;
+        m_rotateStun = true;
+        m_stunPicture.gameObject.SetActive(true);
+        m_speedMultiplier = 0.5f;
         m_jumpSpeed.y /= 2;
         yield return new WaitForSeconds(3f);
-        m_speed.x *= 2;
+        m_rotateStun = false;
+        m_stunPicture.gameObject.SetActive(false);
+        m_speedMultiplier = 1;
         m_jumpSpeed.y *= 2;
     }
 
     private void MovePlayer(float p_dir)
     {
-        m_speed.x = p_dir * m_SpeedMovement;
+        m_speed.x = p_dir * m_SpeedMovement * m_speedMultiplier;
 
         
         if (p_dir == 0) return;
@@ -246,7 +266,7 @@ public class PlayerController : MonoBehaviour
 
         if(m_HP <= 0)
         {
-
+            Debug.Log("End Game");
             DisplayWinScreen();
         }
     }

@@ -44,8 +44,7 @@ public class Coco : MonoBehaviour
             
             PlayerController pc = collision.transform.GetComponent<PlayerController>();
             if (pc == null) return;
-            Debug.Log("Stun" + pc.name);
-            Debug.Log(1 << pc.gameObject.layer);
+            pc.m_score.RemovePoint();
             StartCoroutine(pc.Stun());
         }
     }

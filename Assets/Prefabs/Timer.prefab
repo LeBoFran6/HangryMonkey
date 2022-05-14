@@ -44,5 +44,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeRemaining: 180
-  timerIsRunning: 0
+  timerIsRunning: 1
   timeText: {fileID: 0}
+  m_monster: {fileID: 0}

@@ -43,6 +43,12 @@ public class Monster : MonoBehaviour
         if (FeedingBar.value <= 0)
         {
             Slap = true;
+
+
+            //retire une vie a chaque joueure
+            Player1.GetDamage(1);
+            Player2.GetDamage(1);
+
         }
 
         if (Timer > -1)
@@ -101,11 +107,10 @@ public class Monster : MonoBehaviour
             Debug.Log("ENDslap");
             Slap = false;
         }
+
         FeedingBar.value = 100;
 
-        //retire une vie a chaque joueure
-        Player1.GetDamage(1);
-        Player2.GetDamage(1);
+
     }
 
     public void RageMode()
