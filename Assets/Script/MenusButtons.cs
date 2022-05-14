@@ -71,6 +71,8 @@ public class MenusButtons : MonoBehaviour
     public GameObject PlayerSelectionMenu;
     public GameObject CreditsMenu;
     public GameObject LoadingInteractif;
+    public GameObject WinScreen;
+
 
     public GameObject GoButton;
 
@@ -137,6 +139,11 @@ public class MenusButtons : MonoBehaviour
     {
         PlayerSelectionMenu.SetActive(false);
         LoadingInteractif.SetActive(true);
+    }
+    public void ReturnTuMainMenuAfterGame()
+    {
+        WinScreen.SetActive(false);
+        MainMenu.SetActive(true);
     }
     public void BackCredits()
     {
