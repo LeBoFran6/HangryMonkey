@@ -12,7 +12,7 @@ public class Coco : MonoBehaviour
     private Sprite m_sprite;
 
     [SerializeField]
-    private LayerMask m_layerCoco;
+    private LayerMask m_layerTeleport;
     [SerializeField]
     private LayerMask m_layerPlayer1;
 
@@ -33,7 +33,7 @@ public class Coco : MonoBehaviour
    
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if((m_layerOtherPlayer.value != collision.transform.gameObject.layer) && m_throw)
+        if((m_layerOtherPlayer.value != collision.transform.gameObject.layer) && m_throw && (m_layerTeleport.value & (1 << collision.transform.gameObject.layer)) <= 0)
         {
             Debug.Log(m_layerOtherPlayer.value + " " + collision.transform.gameObject.layer);
             Explosion();
