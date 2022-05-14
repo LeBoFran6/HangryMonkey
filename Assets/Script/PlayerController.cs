@@ -36,6 +36,12 @@ public class PlayerController : MonoBehaviour
     private SpawnersManager m_spawnerManager;
 
     [SerializeField]
+    private Monster m_monster;
+
+    [SerializeField]
+    private GameManager m_gameManager;
+
+    [SerializeField]
     private List<Transform> m_listPointEatMonster;
 
     [SerializeField]
@@ -59,6 +65,8 @@ public class PlayerController : MonoBehaviour
 
     private int m_HP = 3;
 
+    private bool m_pause;
+
     private bool m_canJump = true;
 
     private Vector2 m_speed = new Vector2(0,0);
@@ -71,6 +79,8 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         //m_speed.x = Input.GetAxisRaw("Horizontal");
+
+        if (m_pause) return;
 
         if (m_isPlayerOne)
         {
@@ -236,13 +246,18 @@ public class PlayerController : MonoBehaviour
 
         if(m_HP <= 0)
         {
+
             DisplayWinScreen();
         }
     }
 
     private void DisplayWinScreen()
     {
+        m_pause = true;
+        m_monster.canEat = false;
 
+        m_gameManager.Display(1);
+        //Display
     }
 
     private void JumpPlayer()

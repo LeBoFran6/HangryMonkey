@@ -164,6 +164,7 @@ MonoBehaviour:
   m_leftSlot: {fileID: 631118208}
   m_currentCoco: {fileID: 0}
   m_spawnerManager: {fileID: 0}
+  m_gameManager: {fileID: 0}
   m_listPointEatMonster:
   - {fileID: 0}
   - {fileID: 0}
