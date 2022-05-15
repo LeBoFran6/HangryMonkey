@@ -474,6 +474,10 @@ PrefabInstance:
       propertyPath: m_managerLoad
       value: 
       objectReference: {fileID: 2054758879}
+    - target: {fileID: 825775645529458197, guid: 8368499d65462cf43bf96e6d12c744b2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2752818789082409453, guid: 8368499d65462cf43bf96e6d12c744b2, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
@@ -685,6 +689,22 @@ PrefabInstance:
     - target: {fileID: 7096025959547749098, guid: 8368499d65462cf43bf96e6d12c744b2, type: 3}
       propertyPath: m_Color.r
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7322179619316258233, guid: 8368499d65462cf43bf96e6d12c744b2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7322179619316258233, guid: 8368499d65462cf43bf96e6d12c744b2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 619852149}
+    - target: {fileID: 7322179619316258233, guid: 8368499d65462cf43bf96e6d12c744b2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: LaunchScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 7322179619316258233, guid: 8368499d65462cf43bf96e6d12c744b2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: SwitchScene, Assembly-CSharp
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8368499d65462cf43bf96e6d12c744b2, type: 3}
@@ -1120,6 +1140,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92effee2f8406444fb739485de933420, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &336175517 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5405741967770419270, guid: 8368499d65462cf43bf96e6d12c744b2, type: 3}
+  m_PrefabInstance: {fileID: 56479296}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &340165964 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 340165964, guid: 72d4eda27f62b9d42945af8c4ab53765, type: 3}
@@ -1217,6 +1242,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &420382196 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5831308524655851576, guid: 8368499d65462cf43bf96e6d12c744b2, type: 3}
+  m_PrefabInstance: {fileID: 56479296}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &438697479
 GameObject:
   m_ObjectHideFlags: 0
@@ -1533,6 +1563,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 593361716}
   m_CullTransparentMesh: 1
+--- !u!1 &619852148 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 315877121073021992, guid: 8368499d65462cf43bf96e6d12c744b2, type: 3}
+  m_PrefabInstance: {fileID: 56479296}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &619852149
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 619852148}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f7f5a23d99f63e42a51195d8cc087a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &643491443 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3864083230883465485, guid: ebb3007b0f052c24eb557ecefde4c57c, type: 3}
@@ -1681,6 +1728,11 @@ Transform:
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 762529845, guid: 72d4eda27f62b9d42945af8c4ab53765, type: 3}
   m_PrefabInstance: {fileID: 1356180836}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &863904547 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5676740879009692862, guid: 8368499d65462cf43bf96e6d12c744b2, type: 3}
+  m_PrefabInstance: {fileID: 56479296}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &907134913
 GameObject:
@@ -2289,6 +2341,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f5a32dfa3fdd2074baa93d61e198d2a7, type: 3}
+--- !u!1 &1278759915 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 825775645529458197, guid: 8368499d65462cf43bf96e6d12c744b2, type: 3}
+  m_PrefabInstance: {fileID: 56479296}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1356180836
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3814,6 +3871,26 @@ PrefabInstance:
       value: GameManager
       objectReference: {fileID: 0}
     - target: {fileID: 5641522761578595145, guid: af56223e2dc6d2f40af9938292770dcd, type: 3}
+      propertyPath: m_p1
+      value: 
+      objectReference: {fileID: 1000243900}
+    - target: {fileID: 5641522761578595145, guid: af56223e2dc6d2f40af9938292770dcd, type: 3}
+      propertyPath: m_p2
+      value: 
+      objectReference: {fileID: 1359240977}
+    - target: {fileID: 5641522761578595145, guid: af56223e2dc6d2f40af9938292770dcd, type: 3}
+      propertyPath: m_Draw
+      value: 
+      objectReference: {fileID: 336175517}
+    - target: {fileID: 5641522761578595145, guid: af56223e2dc6d2f40af9938292770dcd, type: 3}
+      propertyPath: m_P1Win
+      value: 
+      objectReference: {fileID: 863904547}
+    - target: {fileID: 5641522761578595145, guid: af56223e2dc6d2f40af9938292770dcd, type: 3}
+      propertyPath: m_P2Win
+      value: 
+      objectReference: {fileID: 1278759915}
+    - target: {fileID: 5641522761578595145, guid: af56223e2dc6d2f40af9938292770dcd, type: 3}
       propertyPath: m_listCanvas.Array.size
       value: 2
       objectReference: {fileID: 0}
@@ -3824,7 +3901,7 @@ PrefabInstance:
     - target: {fileID: 5641522761578595145, guid: af56223e2dc6d2f40af9938292770dcd, type: 3}
       propertyPath: m_listCanvas.Array.data[1]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 420382196}
     - target: {fileID: 5641522761578595145, guid: af56223e2dc6d2f40af9938292770dcd, type: 3}
       propertyPath: m_listCanvas.Array.data[2]
       value: 

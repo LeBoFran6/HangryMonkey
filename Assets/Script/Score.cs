@@ -15,7 +15,7 @@ public class Score : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI m_textMeshPro;
 
-    private float m_currentPoint = 0;
+    public float m_currentPoint = 0;
 
     private void Awake()
     {

@@ -73,7 +73,7 @@ public class PlayerController : MonoBehaviour
 
     private Vector3 m_collideGravity;
 
-    private int m_HP = 3;
+    private int m_HP = 1;
 
     private int m_moveHash;
     private int m_idleHash;
@@ -218,7 +218,7 @@ public class PlayerController : MonoBehaviour
     {
         GameObject go = Instantiate(m_cocoLaunch);
         go.transform.position = m_currentCoco.position;
-
+        go.layer = gameObject.layer;
         m_currentCoco.gameObject.SetActive(false);
         m_currentCoco = null;
 
