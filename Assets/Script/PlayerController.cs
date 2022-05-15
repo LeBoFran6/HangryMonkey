@@ -51,6 +51,9 @@ public class PlayerController : MonoBehaviour
     private GameManager m_gameManager;
 
     [SerializeField]
+    private LineRenderer m_lineRender;
+
+    [SerializeField]
     private List<Transform> m_listPointEatMonster;
 
     [SerializeField]
@@ -70,6 +73,9 @@ public class PlayerController : MonoBehaviour
     
     [SerializeField]
     private AudioSource m_stunSound;
+
+    [SerializeField]
+    private float m_bufferTime = 0.5f;
 
     private float m_throwValue;
     private float m_speedMultiplier = 1;
@@ -92,8 +98,11 @@ public class PlayerController : MonoBehaviour
     private Coroutine m_coroutineCooldown;
 
     private Vector2 m_speed = new Vector2(0,0);
+    private Vector2 m_scale = new Vector2(0,0);
 
     private Coroutine m_stunRoutine;
+    private Coroutine m_coroutineJump;
+    private float m_compteur;
 
     private void Awake()
     {
@@ -108,6 +117,8 @@ public class PlayerController : MonoBehaviour
         m_2degatHash = Animator.StringToHash("1degat");
         m_1degatHash = Animator.StringToHash("2degat");
         m_lancerHash = Animator.StringToHash("Lancer");
+
+        m_scale = transform.localScale;
 }
 
     private void Update()
@@ -126,13 +137,15 @@ public class PlayerController : MonoBehaviour
             if (Input.GetKey(KeyCode.D)) { MovePlayer(1); };
             if (Input.GetKeyUp(KeyCode.D)) { MovePlayer(0); };
 
-            if (Input.GetKeyDown(KeyCode.Z) && m_canJump) { JumpPlayer(); };
+            if (Input.GetKeyDown(KeyCode.Z)) { JumpPlayer(); };
 
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 m_throwValue = Time.time;
+                //m_lineRender.gameObject.SetActive(true);
                 m_coroutineCooldown = StartCoroutine(FeedBackMonsterShot());
             }
+
             if (Input.GetKeyUp(KeyCode.Space)) { ThrowCoco(); };
             return;
         }
@@ -142,7 +155,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKey(KeyCode.Keypad4)) { MovePlayer(-1); };
         if (Input.GetKeyUp(KeyCode.Keypad4)) { MovePlayer(0); };
 
-        if (Input.GetKeyDown(KeyCode.Keypad8) && m_canJump) { JumpPlayer(); };
+        if (Input.GetKeyDown(KeyCode.Keypad8)) { JumpPlayer(); };
 
         if (Input.GetKeyDown(KeyCode.KeypadEnter)) 
         { 
@@ -161,6 +174,9 @@ public class PlayerController : MonoBehaviour
 
         if(m_coroutineCooldown != null)StopCoroutine(m_coroutineCooldown);
 
+        //m_lineRender.SetPosition(0, m_currentCoco.position);
+        //m_lineRender.SetPosition(1, m_listPointEatMonster[0].position);
+
         float timeValue = Time.time - m_throwValue;
         
         m_animator.SetTrigger(m_lancerHash);
@@ -168,13 +184,14 @@ public class PlayerController : MonoBehaviour
         if (timeValue > 0.5f)
         {
             ProjectForMonster();
+            //m_lineRender.gameObject.SetActive(false);
             m_throwValue = 0;
             return;
         }
         Debug.Log("Donner a manger au monstre" + timeValue);
         m_spawnerManager.GetComponent<SpawnersManager>().fruitsC -= 1;
         ProjectForPlayer();
-
+        //m_lineRender.gameObject.SetActive(false);
         m_throwValue = 0;
     }
 
@@ -257,8 +274,12 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (m_canJump) return;
         m_canJump = true;
+        transform.localScale = m_scale;
         m_animator.ResetTrigger(m_jumpHash);
+        
+
     }
 
     private void FixedUpdate()
@@ -354,8 +375,28 @@ public class PlayerController : MonoBehaviour
 
     private void JumpPlayer()
     {
+        if (m_coroutineJump == null) m_coroutineJump = StartCoroutine(JumpBuffer());
+    }
+
+    private void Jump()
+    {
         m_animator.SetTrigger(m_jumpHash);
         m_canJump = false;
         m_rb.velocity = m_jumpSpeed;
+    }
+
+    IEnumerator JumpBuffer()
+    {
+        m_compteur = 0;
+
+        while(m_compteur < m_bufferTime && m_canJump == false)
+        {
+            Debug.Log("Timer ++");
+            m_compteur += Time.deltaTime;
+            yield return null;
+        }
+
+        m_coroutineJump = null;
+        if (m_canJump) Jump();
     }
 }
