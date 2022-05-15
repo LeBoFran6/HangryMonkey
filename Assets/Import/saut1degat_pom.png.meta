@@ -1,25 +1,25 @@
 fileFormatVersion: 2
-guid: 3903b5e83eedb734893938cc19b3e2d0
+guid: c4d3af67d384dec409cb0d2f549932a3
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5317334938184069572
-    second: banane_saut_0
+      213: 486308199445614880
+    second: saut1degat_pom_0
   - first:
-      213: -3318804524068788128
-    second: banane_saut_1
+      213: -7089906557047860566
+    second: saut1degat_pom_1
   - first:
-      213: 307648675808135442
-    second: banane_saut_2
+      213: -112134482104923440
+    second: saut1degat_pom_2
   - first:
-      213: -156829216405441891
-    second: banane_saut_3
+      213: 1027207966574129800
+    second: saut1degat_pom_3
   - first:
-      213: -4765629711821657345
-    second: banane_saut_4
+      213: 1258318083526730524
+    second: saut1degat_pom_4
   - first:
-      213: -8498813632549488318
-    second: banane_saut_5
+      213: 2928445622938876359
+    second: saut1degat_pom_5
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -145,7 +145,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: banane_saut_0
+      name: saut1degat_pom_0
       rect:
         serializedVersion: 2
         x: 0
@@ -159,14 +159,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4c13c3e24f7fac940800000000000000
-      internalID: 5317334938184069572
+      spriteID: 021d0571bb6bfb600800000000000000
+      internalID: 486308199445614880
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: banane_saut_1
+      name: saut1degat_pom_1
       rect:
         serializedVersion: 2
         x: 240
@@ -180,14 +180,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 068abef7edc31f1d0800000000000000
-      internalID: -3318804524068788128
+      spriteID: aa21370ec879b9d90800000000000000
+      internalID: -7089906557047860566
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: banane_saut_2
+      name: saut1degat_pom_2
       rect:
         serializedVersion: 2
         x: 480
@@ -201,14 +201,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 219c92537dcf44400800000000000000
-      internalID: 307648675808135442
+      spriteID: 0da401b584e917ef0800000000000000
+      internalID: -112134482104923440
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: banane_saut_3
+      name: saut1degat_pom_3
       rect:
         serializedVersion: 2
         x: 720
@@ -222,14 +222,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d9230c998a4d2ddf0800000000000000
-      internalID: -156829216405441891
+      spriteID: 8823a160430614e00800000000000000
+      internalID: 1027207966574129800
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: banane_saut_4
+      name: saut1degat_pom_4
       rect:
         serializedVersion: 2
         x: 960
@@ -243,14 +243,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ffaa2d7c6051dddb0800000000000000
-      internalID: -4765629711821657345
+      spriteID: c13af0f41a1767110800000000000000
+      internalID: 1258318083526730524
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: banane_saut_5
+      name: saut1degat_pom_5
       rect:
         serializedVersion: 2
         x: 1200
@@ -264,8 +264,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 249f3a3a7062e0a80800000000000000
-      internalID: -8498813632549488318
+      spriteID: 7c9b15b47cde3a820800000000000000
+      internalID: 2928445622938876359
       vertices: []
       indices: 
       edges: []
@@ -273,7 +273,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: d51d11cad820cac41aca9526c47ad13a
     internalID: 0
     vertices: []
     indices: 

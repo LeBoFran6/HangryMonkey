@@ -39,6 +39,9 @@ public class PlayerController : MonoBehaviour
     public Score m_score;
 
     [SerializeField]
+    private Animator m_animator;
+
+    [SerializeField]
     private SpawnersManager m_spawnerManager;
 
     [SerializeField]
@@ -72,6 +75,12 @@ public class PlayerController : MonoBehaviour
 
     private int m_HP = 3;
 
+    private int m_moveHash;
+    private int m_idleHash;
+    private int m_jumpHash;
+    private int m_2degatHash;
+    private int m_1degatHash;
+
     public bool m_pause;
     private bool m_rotateStun;
 
@@ -83,8 +92,15 @@ public class PlayerController : MonoBehaviour
     {
         m_collideGravity.y = m_collideGravityValue;
         m_stunPicture.gameObject.SetActive(false);
+
         if (m_pause) m_rb.simulated = false;
-    }
+
+        m_moveHash = Animator.StringToHash("Moving");
+        m_idleHash = Animator.StringToHash("Idle");
+        m_jumpHash = Animator.StringToHash("Jump");
+        m_2degatHash = Animator.StringToHash("1degat");
+        m_1degatHash = Animator.StringToHash("2degat");
+}
 
     private void Update()
     {
@@ -233,8 +249,21 @@ public class PlayerController : MonoBehaviour
     {
         m_speed.x = p_dir * m_SpeedMovement * m_speedMultiplier;
 
-        
-        if (p_dir == 0) return;
+        if (m_HP == 2) m_animator.SetTrigger(m_1degatHash);
+        if (m_HP == 1) m_animator.SetTrigger(m_2degatHash);
+
+        m_animator.SetTrigger(m_idleHash);
+
+        if (p_dir == 0)
+        {
+
+            m_animator.ResetTrigger(m_moveHash);
+            m_animator.SetTrigger(m_idleHash);
+            return;
+        }
+
+        m_animator.ResetTrigger(m_idleHash);
+        m_animator.SetTrigger(m_moveHash);
 
         m_projectionSpeed.x *= p_dir;
 
@@ -264,7 +293,10 @@ public class PlayerController : MonoBehaviour
     {
         m_HP -= p_less;
 
-        if(m_HP <= 0)
+        if(m_HP == 2) m_animator.SetTrigger(m_1degatHash);
+        if(m_HP == 1) m_animator.SetTrigger(m_2degatHash);
+
+        if (m_HP <= 0)
         {
             Debug.Log("End Game");
             DisplayWinScreen();
@@ -282,6 +314,7 @@ public class PlayerController : MonoBehaviour
 
     private void JumpPlayer()
     {
+        m_animator.SetTrigger(m_jumpHash);
         m_canJump = false;
         m_rb.velocity = m_jumpSpeed;
     }
