@@ -11990,7 +11990,7 @@ RectTransform:
   - {fileID: 16349137}
   - {fileID: 17444778}
   m_Father: {fileID: 515105897}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -13549,10 +13549,10 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 806751260}
+  - {fileID: 1608208697}
   - {fileID: 1359357908}
   - {fileID: 763396532}
   - {fileID: 435898901}
-  - {fileID: 1608208697}
   - {fileID: 1788121906}
   m_Father: {fileID: 0}
   m_RootOrder: 6
@@ -21119,7 +21119,7 @@ RectTransform:
   - {fileID: 1412631009}
   - {fileID: 569562005}
   m_Father: {fileID: 515105897}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -32721,6 +32721,7 @@ GameObject:
   - component: {fileID: 1219768296}
   - component: {fileID: 1219768298}
   - component: {fileID: 1219768297}
+  - component: {fileID: 1219768299}
   m_Layer: 5
   m_Name: RawImage
   m_TagString: Untagged
@@ -32782,6 +32783,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1219768295}
   m_CullTransparentMesh: 1
+--- !u!95 &1219768299
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1219768295}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 874ced720b9233a4c987b440c42d4f92, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &1225979945
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -36062,7 +36082,7 @@ RectTransform:
   - {fileID: 1833209741}
   - {fileID: 1743242400}
   m_Father: {fileID: 515105897}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -42363,9 +42383,9 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_AdditionalShaderChannelsFlag: 25
+  m_AdditionalShaderChannelsFlag: -1
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 6
   m_TargetDisplay: 0
 --- !u!224 &1608208697
 RectTransform:
@@ -42383,7 +42403,7 @@ RectTransform:
   - {fileID: 2128643812}
   - {fileID: 120580555}
   m_Father: {fileID: 515105897}
-  m_RootOrder: 4
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}

@@ -66,6 +66,7 @@ Transform:
   - {fileID: 6171469804213918956}
   - {fileID: 631118208}
   - {fileID: 6321200750878422389}
+  - {fileID: 2731858033604267845}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -166,6 +167,7 @@ MonoBehaviour:
   m_stunPicture: {fileID: 6321200750878422389}
   m_leftSlot: {fileID: 631118208}
   m_currentCoco: {fileID: 0}
+  m_lookMonster: {fileID: 2731858033604267845}
   m_score: {fileID: 0}
   m_animator: {fileID: 4519130686461546825}
   m_spawnerManager: {fileID: 0}
@@ -183,6 +185,7 @@ MonoBehaviour:
   m_projectionSpeed: {x: 90, y: 20}
   m_jumpSpeed: {x: 0, y: 45}
   m_collideGravityValue: 10
+  m_stunSound: {fileID: 0}
   m_pause: 1
 --- !u!61 &4146414437584654202
 BoxCollider2D:
@@ -255,6 +258,36 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!1 &7338515191596961151
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2731858033604267845}
+  m_Layer: 6
+  m_Name: LookGorillaz
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2731858033604267845
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7338515191596961151}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4146414437584654181}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7889512002204637214
 GameObject:
   m_ObjectHideFlags: 0

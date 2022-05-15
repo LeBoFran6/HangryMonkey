@@ -19,6 +19,8 @@ public class LoadInteractifManager : MonoBehaviour
 
     [SerializeField]
     private SpawnersManager m_spawnManager;
+    [SerializeField]
+    private SpawnersManager m_spawnManager2;
 
     [SerializeField]
     private Transform m_uiMonster;
@@ -48,6 +50,7 @@ public class LoadInteractifManager : MonoBehaviour
         yield return new WaitForSeconds(2f);
         m_timer.timerIsRunning = true;
         m_spawnManager.Pause = false;
+        m_spawnManager2.Pause = false;
         m_monster.canEat = true;
         
     }
