@@ -306,6 +306,7 @@ public class PlayerController : MonoBehaviour
         m_speedMultiplier = 0.5f;
         m_jumpSpeed.y /= 2;
         yield return new WaitForSeconds(3f);
+        m_stunRoutine = null;
         m_rotateStun = false;
         m_stunPicture.gameObject.SetActive(false);
         m_speedMultiplier = 1;
