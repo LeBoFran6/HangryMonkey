@@ -255,6 +255,7 @@ public class PlayerController : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         m_canJump = true;
+        m_animator.ResetTrigger(m_jumpHash);
     }
 
     private void FixedUpdate()
