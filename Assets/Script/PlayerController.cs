@@ -249,8 +249,7 @@ public class PlayerController : MonoBehaviour
     {
         m_speed.x = p_dir * m_SpeedMovement * m_speedMultiplier;
 
-        if (m_HP == 2) m_animator.SetTrigger(m_1degatHash);
-        if (m_HP == 1) m_animator.SetTrigger(m_2degatHash);
+        
 
         m_animator.SetTrigger(m_idleHash);
 
@@ -293,8 +292,8 @@ public class PlayerController : MonoBehaviour
     {
         m_HP -= p_less;
 
-        if(m_HP == 2) m_animator.SetTrigger(m_1degatHash);
-        if(m_HP == 1) m_animator.SetTrigger(m_2degatHash);
+        if(m_HP == 1) m_animator.SetTrigger(m_1degatHash);
+        if(m_HP == 2) m_animator.SetTrigger(m_2degatHash);
 
         if (m_HP <= 0)
         {

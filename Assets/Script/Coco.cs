@@ -47,6 +47,7 @@ public class Coco : MonoBehaviour
             PlayerController pc = collision.transform.GetComponent<PlayerController>();
             if (pc == null) return;
             pc.m_score.RemovePoint();
+           
             if(m_stunRoutine != null) StopCoroutine(m_stunRoutine);
             m_stunRoutine = StartCoroutine(pc.Stun());
         }
@@ -70,7 +71,7 @@ public class Coco : MonoBehaviour
     IEnumerator WaitHide()
     {
         yield return m_waitHide;
-
+        if (m_stunRoutine != null) StopCoroutine(m_stunRoutine); ;
         Destroy(gameObject);
     }
 }
