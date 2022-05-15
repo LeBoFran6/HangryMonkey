@@ -13,7 +13,7 @@ public class PlayerController : MonoBehaviour
     private LayerMask m_layerCoco;
 
     [SerializeField]
-    private Rigidbody2D m_rb;
+    public Rigidbody2D m_rb;
 
     [SerializeField]
     private GameObject m_cocoLaunch;
@@ -83,6 +83,7 @@ public class PlayerController : MonoBehaviour
     {
         m_collideGravity.y = m_collideGravityValue;
         m_stunPicture.gameObject.SetActive(false);
+        if (m_pause) m_rb.simulated = false;
     }
 
     private void Update()
@@ -201,7 +202,6 @@ public class PlayerController : MonoBehaviour
             }
 
             m_currentCoco.transform.position = m_rightSlot.position;
-            m_currentCoco.transform.localScale /= 2;
             Destroy(other.gameObject);
         }
     }

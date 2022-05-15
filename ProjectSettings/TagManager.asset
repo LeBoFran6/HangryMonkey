@@ -8,18 +8,14 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Sol
+  - 1
   - Water
   - UI
-  - Player1
-  - Player2
-  - Coco
-  - Teleport
-<<<<<<< Updated upstream
-  - NoPlayerCollision
-=======
-  - Post Processing
->>>>>>> Stashed changes
+  - 2
+  - 3
+  - 4
+  - 5
+  - 
   - 
   - 
   - 
