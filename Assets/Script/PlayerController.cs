@@ -85,6 +85,7 @@ public class PlayerController : MonoBehaviour
     private bool m_rotateStun;
 
     private bool m_canJump = true;
+    private Coroutine m_coroutineCooldown;
 
     private Vector2 m_speed = new Vector2(0,0);
 
@@ -111,7 +112,7 @@ public class PlayerController : MonoBehaviour
         if (m_pause) return;
 
         if (m_rotateStun) m_stunPicture.Rotate(Vector3.forward);
-        
+
 
         if (m_isPlayerOne)
         {
@@ -122,7 +123,11 @@ public class PlayerController : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.Z) && m_canJump) { JumpPlayer(); };
 
-            if (Input.GetKeyDown(KeyCode.Space)) { m_throwValue = Time.time; };
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                m_throwValue = Time.time;
+                m_coroutineCooldown = StartCoroutine(FeedBackMonsterShot());
+            }
             if (Input.GetKeyUp(KeyCode.Space)) { ThrowCoco(); };
             return;
         }
@@ -134,17 +139,25 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Keypad8) && m_canJump) { JumpPlayer(); };
 
-        if (Input.GetKeyDown(KeyCode.KeypadEnter)) { m_throwValue = Time.time; };
+        if (Input.GetKeyDown(KeyCode.KeypadEnter)) 
+        { 
+            m_throwValue = Time.time;
+            m_coroutineCooldown = StartCoroutine(FeedBackMonsterShot());
+        }
         if (Input.GetKeyUp(KeyCode.KeypadEnter)) { ThrowCoco(); };
 
         
-
     }
 
     private void ThrowCoco()
     {
+        
         if (m_currentCoco == null) return;
+
+        if(m_coroutineCooldown != null)StopCoroutine(m_coroutineCooldown);
+
         float timeValue = Time.time - m_throwValue;
+
         if (timeValue > 0.5f)
         {
             ProjectForMonster();
@@ -156,6 +169,17 @@ public class PlayerController : MonoBehaviour
         ProjectForPlayer();
 
         m_throwValue = 0;
+    }
+
+    IEnumerator FeedBackMonsterShot()
+    {
+        yield return new WaitForSeconds(0.01f);
+
+        if (m_currentCoco != null && m_currentCoco.transform.localScale.x < 0.2f)
+        {
+            m_currentCoco.transform.localScale += Vector3.one * Time.deltaTime;
+            StartCoroutine(FeedBackMonsterShot());
+        }
     }
 
     private void ProjectForMonster()
