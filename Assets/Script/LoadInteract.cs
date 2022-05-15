@@ -23,6 +23,7 @@ public class LoadInteract : MonoBehaviour
     {
         if (Input.GetKeyDown(m_letter) && !m_done && gameObject.activeSelf)
         {
+            m_done = true;
             transform.DOShakeRotation(0.5f, 10);
             m_managerLoad.AddKeyPress();
             GetComponent<Image>().sprite = m_newSprite;
