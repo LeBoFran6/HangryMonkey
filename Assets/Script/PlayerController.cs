@@ -36,7 +36,7 @@ public class PlayerController : MonoBehaviour
     private Transform m_currentTargetMonster;
 
     [SerializeField]
-    public Score m_score;
+    public Score  m_score;
 
     [SerializeField]
     private Animator m_animator;
@@ -73,7 +73,7 @@ public class PlayerController : MonoBehaviour
 
     private Vector3 m_collideGravity;
 
-    private int m_HP = 1;
+    private int m_HP = 3;
 
     private int m_moveHash;
     private int m_idleHash;
