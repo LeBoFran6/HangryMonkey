@@ -80,6 +80,7 @@ public class PlayerController : MonoBehaviour
     private int m_jumpHash;
     private int m_2degatHash;
     private int m_1degatHash;
+    private int m_lancerHash;
 
     public bool m_pause;
     private bool m_rotateStun;
@@ -103,6 +104,7 @@ public class PlayerController : MonoBehaviour
         m_jumpHash = Animator.StringToHash("Jump");
         m_2degatHash = Animator.StringToHash("1degat");
         m_1degatHash = Animator.StringToHash("2degat");
+        m_lancerHash = Animator.StringToHash("Lancer");
 }
 
     private void Update()
@@ -157,7 +159,9 @@ public class PlayerController : MonoBehaviour
         if(m_coroutineCooldown != null)StopCoroutine(m_coroutineCooldown);
 
         float timeValue = Time.time - m_throwValue;
-
+        
+        m_animator.SetTrigger(m_lancerHash);
+        
         if (timeValue > 0.5f)
         {
             ProjectForMonster();

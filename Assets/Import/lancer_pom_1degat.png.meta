@@ -1,25 +1,25 @@
 fileFormatVersion: 2
-guid: becbe22dc2d7dd2469430c1b97c38ec3
+guid: 12503dae5eb337d40905be36fe13b180
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2408166019257061545
-    second: sautlancer_pom-2degats_0
+      213: -6926842764337692037
+    second: lancer_pom_1degat_0
   - first:
-      213: -2034823931747951577
-    second: sautlancer_pom-2degats_1
+      213: -511875425269058958
+    second: lancer_pom_1degat_1
   - first:
-      213: 2767254478919969456
-    second: sautlancer_pom-2degats_2
+      213: 9059349669317604741
+    second: lancer_pom_1degat_2
   - first:
-      213: 6034741293100625214
-    second: sautlancer_pom-2degats_3
+      213: 1448409522651130096
+    second: lancer_pom_1degat_3
   - first:
-      213: 3419356095074736659
-    second: sautlancer_pom-2degats_4
+      213: 2184638255084623011
+    second: lancer_pom_1degat_4
   - first:
-      213: 6162415094253529411
-    second: sautlancer_pom-2degats_5
+      213: -2981114522046169004
+    second: lancer_pom_1degat_5
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -145,7 +145,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: sautlancer_pom-2degats_0
+      name: lancer_pom_1degat_0
       rect:
         serializedVersion: 2
         x: 0
@@ -159,14 +159,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 75f2406b3c9749ed0800000000000000
-      internalID: -2408166019257061545
+      spriteID: b72caa0b439eedf90800000000000000
+      internalID: -6926842764337692037
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sautlancer_pom-2degats_1
+      name: lancer_pom_1degat_1
       rect:
         serializedVersion: 2
         x: 240
@@ -180,14 +180,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 72c13bf3a6ad2c3e0800000000000000
-      internalID: -2034823931747951577
+      spriteID: 272f593430475e8f0800000000000000
+      internalID: -511875425269058958
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sautlancer_pom-2degats_2
+      name: lancer_pom_1degat_2
       rect:
         serializedVersion: 2
         x: 480
@@ -201,14 +201,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0ba222b7943476620800000000000000
-      internalID: 2767254478919969456
+      spriteID: 5857ab7968649bd70800000000000000
+      internalID: 9059349669317604741
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sautlancer_pom-2degats_3
+      name: lancer_pom_1degat_3
       rect:
         serializedVersion: 2
         x: 720
@@ -222,14 +222,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e3de4ae8b35bfb350800000000000000
-      internalID: 6034741293100625214
+      spriteID: 0f8e9ee69c8c91410800000000000000
+      internalID: 1448409522651130096
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sautlancer_pom-2degats_4
+      name: lancer_pom_1degat_4
       rect:
         serializedVersion: 2
         x: 960
@@ -243,14 +243,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 31a1f7f704ef37f20800000000000000
-      internalID: 3419356095074736659
+      spriteID: 3a45c051be4615e10800000000000000
+      internalID: 2184638255084623011
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sautlancer_pom-2degats_5
+      name: lancer_pom_1degat_5
       rect:
         serializedVersion: 2
         x: 1200
@@ -264,8 +264,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 349ac7bd0eb458550800000000000000
-      internalID: 6162415094253529411
+      spriteID: 4500ea60324f0a6d0800000000000000
+      internalID: -2981114522046169004
       vertices: []
       indices: 
       edges: []
@@ -273,7 +273,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: bd6c345977c7b4844ae8eee93fba3a0e
+    spriteID: 1eff56deae9b2264c8911073d05d0466
     internalID: 0
     vertices: []
     indices: 
