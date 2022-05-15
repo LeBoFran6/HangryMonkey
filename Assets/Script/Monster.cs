@@ -12,6 +12,7 @@ public class Monster : MonoBehaviour
     public GameObject Bouche;
     public GameObject PasDeBouche;
     public GameObject SlapSprite;
+    public Transform AllMonster;
     public float Timer = 0;
     public float Timer2 = 0;
     public float Timer3 = 0;
@@ -34,12 +35,18 @@ public class Monster : MonoBehaviour
     public GameObject RRRRText;
     public GameObject m_camera;
 
+    private Quaternion m_initCamShake;
+    private Quaternion m_initMonkeyShake;
+
 
     void Start()
     {
         FeedingBar.value = 100;
         Timer = 10;
         Timer2 = 0;
+
+        m_initCamShake = m_camera.transform.rotation;
+        m_initMonkeyShake = AllMonster.transform.rotation;
     }
 
     void Update()
@@ -47,7 +54,11 @@ public class Monster : MonoBehaviour
 
         if (!canEat) return;
 
-        FeedingBar.value = FeedingBar.value - 5 * Time.deltaTime;
+        FeedingBar.value = FeedingBar.value - 3.25f* Time.deltaTime;
+
+        if (FeedingBar.value < 20) AllMonster.DOShakeRotation(0.1f, 2, 7, 10);
+        if (FeedingBar.value < 5) AllMonster.DOShakeRotation(0.1f, 3, 15, 20);
+        if (FeedingBar.value < 7) m_camera.transform.DOShakeRotation(0.1f, 0.5f, 1, 2);
 
         if (FeedingBar.value <= 0)
         {
@@ -120,6 +131,9 @@ public class Monster : MonoBehaviour
                 SLAPText.transform.rotation = trans.rotation;
                 m_camera.transform.DOShakeRotation(0.2f, 10, 40);
                 SLAPText.transform.DOShakeRotation(0.5f, 15, 30);
+
+                StartCoroutine(ResetRoation());
+
                 SLAPText.SetActive(true);
                 SlapSprite.SetActive(true);
             }
@@ -135,6 +149,13 @@ public class Monster : MonoBehaviour
 
         FeedingBar.value = 100;
 
+    }
+
+    IEnumerator ResetRoation()
+    {
+        yield return new WaitForSeconds(0.2f);
+        m_camera.transform.rotation = m_initCamShake;
+        AllMonster.transform.rotation = m_initMonkeyShake;
     }
 
     public void RageMode()

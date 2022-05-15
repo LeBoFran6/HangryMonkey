@@ -119,9 +119,11 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        //m_speed.x = Input.GetAxisRaw("Horizontal");
-        m_lookMonster.LookAt(m_monster.transform);
+
         if (m_pause) return;
+
+        //m_speed.x = Input.GetAxisRaw("Horizontal");
+        m_lookMonster.up = (m_monster.transform.position - transform.position).normalized;
 
         if (m_rotateStun) m_stunPicture.Rotate(Vector3.forward);
 
@@ -137,7 +139,7 @@ public class PlayerController : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                //m_lookMonster.gameObject.SetActive(true);
+                if(m_coroutineCooldown != null) m_lookMonster.gameObject.SetActive(true);
                 m_throwValue = Time.time;
                 m_coroutineCooldown = StartCoroutine(FeedBackMonsterShot());
             }
@@ -155,7 +157,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.RightControl)) 
         {
 
-            //m_lookMonster.gameObject.SetActive(true);
+            if (m_coroutineCooldown != null) m_lookMonster.gameObject.SetActive(true);
             m_throwValue = Time.time;
             m_coroutineCooldown = StartCoroutine(FeedBackMonsterShot());
         }
@@ -313,8 +315,6 @@ public class PlayerController : MonoBehaviour
     private void MovePlayer(float p_dir)
     {
         m_speed.x = p_dir * m_SpeedMovement * m_speedMultiplier;
-
-        
 
         m_animator.SetTrigger(m_idleHash);
 

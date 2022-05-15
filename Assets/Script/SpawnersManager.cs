@@ -21,7 +21,7 @@ public class SpawnersManager : MonoBehaviour
     void Start()
     {
         fruitsC = 1;
-        randomNumber = Random.Range(2f, 6f);
+        randomNumber = Random.Range(2f, 4f);
         randomSpawner = Random.Range(0f, 3f);
     }
     
