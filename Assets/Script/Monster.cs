@@ -91,6 +91,7 @@ public class Monster : MonoBehaviour
 
     public void FeedMonster()
     {
+        
         FeedingBar.value = FeedingBar.value  + 5;
         Bouche.SetActive(false);
         PasDeBouche.SetActive(true);
@@ -159,7 +160,7 @@ public class Monster : MonoBehaviour
 
     public void CocoNotIeaten()
     {
-        Debug.Log("CocoNotIeaten");
+        
         PasDeBouche.SetActive(false);
         RRRR = true;
         

@@ -44,7 +44,7 @@ public class Coco : MonoBehaviour
             
             PlayerController pc = collision.transform.GetComponent<PlayerController>();
             if (pc == null) return;
-            pc.m_score.RemovePoint();
+            pc.m_score.RemovePoint(50);
             pc.LaunchStun();
         }
     }

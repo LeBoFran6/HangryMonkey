@@ -97,6 +97,8 @@ public class PlayerController : MonoBehaviour
     private Vector2 m_speed = new Vector2(0,0);
 
     private Coroutine m_stunRoutine;
+    private float m_compteur;
+    private Coroutine m_coroutineJump;
 
     private void Awake()
     {
@@ -131,7 +133,7 @@ public class PlayerController : MonoBehaviour
             if (Input.GetKey(KeyCode.D)) { MovePlayer(1); };
             if (Input.GetKeyUp(KeyCode.D)) { MovePlayer(0); };
 
-            if (Input.GetKeyDown(KeyCode.Z) && m_canJump) { JumpPlayer(); };
+            if (Input.GetKeyDown(KeyCode.Z)) { JumpPlayer(); };
 
             if (Input.GetKeyDown(KeyCode.Space))
             {
@@ -148,16 +150,16 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKey(KeyCode.LeftArrow)) { MovePlayer(-1); };
         if (Input.GetKeyUp(KeyCode.LeftArrow)) { MovePlayer(0); };
 
-        if (Input.GetKeyDown(KeyCode.UpArrow) && m_canJump) { JumpPlayer(); };
+        if (Input.GetKeyDown(KeyCode.UpArrow)) { JumpPlayer(); };
 
-        if (Input.GetKeyDown(KeyCode.KeypadEnter)) 
+        if (Input.GetKeyDown(KeyCode.RightControl)) 
         {
 
             //m_lookMonster.gameObject.SetActive(true);
             m_throwValue = Time.time;
             m_coroutineCooldown = StartCoroutine(FeedBackMonsterShot());
         }
-        if (Input.GetKeyUp(KeyCode.KeypadEnter)) { ThrowCoco(); };
+        if (Input.GetKeyUp(KeyCode.RightControl)) { ThrowCoco(); };
 
         
     }
@@ -223,6 +225,11 @@ public class PlayerController : MonoBehaviour
 
         rbCoco.AddRelativeForce(dirCoco * 100);
 
+        if (m_monster.PasDeBouche.activeSelf == true)
+        {
+            m_score.RemovePoint(100);
+            return;
+        }
         m_score.AddScore();
 
     }
@@ -255,7 +262,7 @@ public class PlayerController : MonoBehaviour
 
             m_currentCoco.transform.SetParent(transform);
 
-            if (m_sprite.flipX)
+            if (!m_sprite.flipX)
             {
                 m_currentCoco.transform.position = m_leftSlot.position;
             }
@@ -278,7 +285,14 @@ public class PlayerController : MonoBehaviour
 
     public void LaunchStun()
     {
-        if (m_stunRoutine != null) StopCoroutine(m_stunRoutine);
+        if (m_stunRoutine != null)
+        {
+            m_rotateStun = false;
+            m_stunPicture.gameObject.SetActive(false);
+            m_speedMultiplier = 1;
+            m_jumpSpeed.y *= 2;
+            StopCoroutine(m_stunRoutine);
+        }
         m_stunRoutine = StartCoroutine(Stun());
     }
 
@@ -364,8 +378,26 @@ public class PlayerController : MonoBehaviour
 
     private void JumpPlayer()
     {
+        if (m_coroutineJump == null) m_coroutineJump = StartCoroutine(m_jumpCoroutine());
+        
+    }
+
+    private void Jump()
+    {
         m_animator.SetTrigger(m_jumpHash);
         m_canJump = false;
         m_rb.velocity = m_jumpSpeed;
+    }
+
+    IEnumerator m_jumpCoroutine()
+    {
+        m_compteur = 0;
+        while(m_compteur < 0.2f && m_canJump == false)
+        {
+            m_compteur += Time.deltaTime;
+            yield return null;
+        }
+        m_coroutineJump = null;
+        if (m_canJump) Jump();
     }
 }

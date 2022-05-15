@@ -7,6 +7,7 @@ public class Timer : MonoBehaviour
 {
     public float timeRemaining = 180;
     public bool timerIsRunning = false;
+    public GameManager gameManager;
     public TextMeshProUGUI timeText;
     public Monster m_monster;
 
@@ -43,6 +44,7 @@ public class Timer : MonoBehaviour
             {
                 Debug.Log("Time has run out!");
                 timeText.text = "Le Singe est rassasié!";
+                gameManager.Display(1);
                 timeRemaining = 0;
                 timerIsRunning = false;
             }

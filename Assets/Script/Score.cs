@@ -22,9 +22,9 @@ public class Score : MonoBehaviour
         UpdateText();
     }
 
-    public void RemovePoint()
+    public void RemovePoint(float p_less)
     {
-        m_currentPoint -= m_downPoint;
+        m_currentPoint -= p_less;
 
         if(m_currentPoint < 0)
         {
