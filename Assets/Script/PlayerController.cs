@@ -88,6 +88,8 @@ public class PlayerController : MonoBehaviour
 
     private Vector2 m_speed = new Vector2(0,0);
 
+    private Coroutine m_stunRoutine;
+
     private void Awake()
     {
         m_collideGravity.y = m_collideGravityValue;
@@ -230,6 +232,12 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         m_rb.AddForce(m_speed * Time.fixedDeltaTime, ForceMode2D.Impulse);
+    }
+
+    public void LaunchStun()
+    {
+        if (m_stunRoutine != null) StopCoroutine(m_stunRoutine);
+        m_stunRoutine = StartCoroutine(Stun());
     }
 
     public IEnumerator Stun()
