@@ -48,6 +48,8 @@ public class Score : MonoBehaviour
     private void UpdateText()
     {
         m_textMeshPro.text = m_currentPoint.ToString();
+
+        m_textMeshPro.transform.localScale = Vector3.one;
         m_textMeshPro.transform.DOPunchScale(Vector3.one * 1.5f, 0.2f);
     }
 }

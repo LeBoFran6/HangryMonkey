@@ -157,11 +157,15 @@ public class Monster : MonoBehaviour
         if (Timer3 > -1)
         {
             Timer3 = Timer3 + 1 * Time.deltaTime;
-            Transform trans = listVignettePoint[Random.Range(0, listVignettePoint.Count - 1)];
-            RRRRText.transform.position = trans.position;
-            RRRRText.transform.rotation = trans.rotation;
-            RRRRText.transform.DOShakeRotation(0.5f, 15, 30);
-            RRRRText.SetActive(true);
+
+            if (!RRRRText.activeSelf)
+            {
+                Transform trans = listVignettePoint[Random.Range(0, listVignettePoint.Count - 1)];
+                RRRRText.transform.position = trans.position;
+                RRRRText.transform.rotation = trans.rotation;
+                RRRRText.transform.DOShakeRotation(0.5f, 15, 30);
+                RRRRText.SetActive(true);
+            }
         }
 
         if (Timer3 > 2)

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class SpawnersManager : MonoBehaviour
 {
+    public bool Pause;
+    
     public float randomNumber;
     public float randomSpawner;
     public float randomS;
@@ -25,6 +27,8 @@ public class SpawnersManager : MonoBehaviour
     
     void Update()
     {
+        if (Pause) return;
+
         if(fruitsC < limitSpawn && randomNumber >= -1)
         {
             randomNumber = randomNumber - 1 *Time.deltaTime;

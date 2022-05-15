@@ -72,7 +72,7 @@ public class PlayerController : MonoBehaviour
 
     private int m_HP = 3;
 
-    private bool m_pause;
+    public bool m_pause;
     private bool m_rotateStun;
 
     private bool m_canJump = true;
@@ -242,12 +242,12 @@ public class PlayerController : MonoBehaviour
         {
             m_projectionSpeed.x = Mathf.Abs(m_projectionSpeed.x);
 
-            m_sprite.flipX = false;
+            m_sprite.flipX = true;
             SetPosCoco(m_rightSlot);
             return;
         }
 
-        m_sprite.flipX = true;
+        m_sprite.flipX = false;
         SetPosCoco(m_leftSlot);
 
         if (m_projectionSpeed.x < 0) return;
