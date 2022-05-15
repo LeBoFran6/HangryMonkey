@@ -10,10 +10,14 @@ public class Timer : MonoBehaviour
     public TextMeshProUGUI timeText;
     public Monster m_monster;
 
+    public AudioSource m_globalMusic;
+    public AudioSource m_speedMusic;
+
 
     private void Start()
     {
         //timerIsRunning = true;
+        m_globalMusic.Play();
     }
 
     void Update()
@@ -28,6 +32,10 @@ public class Timer : MonoBehaviour
 
             if (timeRemaining > 29.5f && timeRemaining < 30.5f)
             {
+                if (!m_speedMusic.isPlaying)
+                {
+                    m_speedMusic.Play();
+                }
                 m_monster.Rage = true;
             }
 

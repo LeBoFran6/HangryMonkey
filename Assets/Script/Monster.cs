@@ -22,11 +22,17 @@ public class Monster : MonoBehaviour
     public bool canEat = true;
     public GameObject NoomText;
 
+    public AudioSource RageAudio;
+    public AudioSource SlapAudio;
+    public AudioSource RRRRAudio;
+    public AudioSource GrumyAudio;
+
     public List<Transform> listVignettePoint;
 
     public GameObject SpawnerManager;
     public GameObject SLAPText;
     public GameObject RRRRText;
+    public GameObject m_camera;
 
 
     void Start()
@@ -88,6 +94,7 @@ public class Monster : MonoBehaviour
         FeedingBar.value = FeedingBar.value  + 5;
         Bouche.SetActive(false);
         PasDeBouche.SetActive(true);
+        GrumyAudio.Play();
         Transform trans = listVignettePoint[Random.Range(0, listVignettePoint.Count - 1)];
         NoomText.transform.position = trans.position;
         NoomText.transform.rotation = trans.rotation;
@@ -106,9 +113,11 @@ public class Monster : MonoBehaviour
             
             if (!SLAPText.activeSelf)
             {
+                SlapAudio.Play();
                 Transform trans = listVignettePoint[Random.Range(0, listVignettePoint.Count - 1)];
                 SLAPText.transform.position = trans.position;
                 SLAPText.transform.rotation = trans.rotation;
+                m_camera.transform.DOShakeRotation(0.2f, 10, 40);
                 SLAPText.transform.DOShakeRotation(0.5f, 15, 30);
                 SLAPText.SetActive(true);
                 SlapSprite.SetActive(true);
@@ -160,6 +169,7 @@ public class Monster : MonoBehaviour
 
             if (!RRRRText.activeSelf)
             {
+                RRRRAudio.Play();
                 Transform trans = listVignettePoint[Random.Range(0, listVignettePoint.Count - 1)];
                 RRRRText.transform.position = trans.position;
                 RRRRText.transform.rotation = trans.rotation;

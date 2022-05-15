@@ -20,6 +20,12 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private GameObject m_Draw;
 
+    [SerializeField]
+    private AudioSource m_win;
+
+    [SerializeField]
+    private AudioSource m_draw;
+
     public void Display(int canvas)
     {
         m_listCanvas[canvas].SetActive(true);
@@ -28,15 +34,18 @@ public class GameManager : MonoBehaviour
         {
             if(m_p1.m_score.m_currentPoint > m_p2.m_score.m_currentPoint)
             {
+                m_win.Play();
                 m_P1Win.SetActive(true);
                 return;
             }
 
             if(m_p1.m_score.m_currentPoint < m_p2.m_score.m_currentPoint)
             {
+                m_win.Play();
                 m_P2Win.SetActive(true);
                 return;
             }
+            m_draw.Play();
             m_Draw.SetActive(true);
         }
     }

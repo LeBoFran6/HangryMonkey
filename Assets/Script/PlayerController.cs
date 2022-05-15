@@ -67,6 +67,9 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField]
     private float m_collideGravityValue;
+    
+    [SerializeField]
+    private AudioSource m_stunSound;
 
     private float m_throwValue;
     private float m_speedMultiplier = 1;
@@ -271,6 +274,7 @@ public class PlayerController : MonoBehaviour
 
     public IEnumerator Stun()
     {
+        m_stunSound.Play();
         m_rotateStun = true;
         m_stunPicture.gameObject.SetActive(true);
         m_speedMultiplier = 0.5f;

@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class MenusButtons : MonoBehaviour
 {
+    [SerializeField]
+    private AudioSource m_music;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        if(m_music != null) m_music.Play();
     }
 
     // Update is called once per frame

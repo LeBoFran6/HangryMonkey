@@ -16,6 +16,9 @@ public class LoadInteract : MonoBehaviour
     [SerializeField]
     private LoadInteractifManager m_managerLoad;
 
+    [SerializeField]
+    private AudioSource m_audioSource;
+
     private bool m_done;
 
     // Update is called once per frame
@@ -24,6 +27,7 @@ public class LoadInteract : MonoBehaviour
         if (Input.GetKeyDown(m_letter) && !m_done && gameObject.activeSelf)
         {
             m_done = true;
+            m_audioSource.Play();
             transform.DOShakeRotation(0.5f, 10);
             m_managerLoad.AddKeyPress();
             GetComponent<Image>().sprite = m_newSprite;
