@@ -5,7 +5,7 @@ Winning game of the Game Jam ETPA (Toulouse / Rennes / Montpellier) 2022
 
 
 
-[![Alt text](https://img.youtube.com/vi/VID/0.jpg)](https://www.youtube.com/watch?v=5wBDeJlw7uA)
+[![Alt text]([https://img.youtube.com/vi/VID/0.jpg](https://youtu.be/5wBDeJlw7uA?t=8))](https://www.youtube.com/watch?v=5wBDeJlw7uA)
 
 
 <object width="425" height="350">
@@ -15,3 +15,6 @@ Winning game of the Game Jam ETPA (Toulouse / Rennes / Montpellier) 2022
          type="application/x-shockwave-flash"
          wmode="transparent" width="425" height="350" />
 </object>
+
+
+https://youtu.be/5wBDeJlw7uA?t=8
