@@ -3,9 +3,9 @@
 
 HANGRY MONKEY !
 
-Winning game of the Game Jam ETPA (Toulouse / Rennes / Montpellier) 2022
+Winning project of the ETPA Game Jam (Toulouse / Rennes / Montpellier) 2022
 
-The jam's theme was : War and Peace.
+The jam theme was : War and Peace.
 
 
 Local multiplayer - 1 VS 1
@@ -25,16 +25,16 @@ https://youtu.be/5wBDeJlw7uA?t=8
 
 Try out the game [here](https://loudebwa.itch.io/espace-temps) 
 
-During this project we were tow developers Edouard Mordant was in charge 
-of the creation of the character controler for the local multiplayer 1v1
+During this project we were two developers : Edouard Mordant was in charge 
+of the character controller for the local multiplayer 1v1.
 
-and i did the rest of the mechanics for exemple the procedural generate items
-the monkey that slaps the 2 players the game over the change scene and the menus
+And I did the rest of the mechanics, for exemple : the procedural generate items,
+the monkey that slaps the 2 players, the game over, the change scene and the menus.
 
 ![My Image](img01.png)
 
-the code in this project is very simple bit for exemple this is one pert of 
-the code that served to create the procural generated coconuts (the weapons in the game)
+The code in this project is very simple. For exemple, this is one part of 
+the code that served to create the procedural generated coconuts (the weapons in the game)
 
 ![My Image](img02.png)
 
