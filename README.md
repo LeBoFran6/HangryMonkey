@@ -43,7 +43,11 @@ the code that served to create the procural generated coconuts (the weapons in t
 A Cubi© production :
 
 Edouard Mordant (Lead - Dev)
+
 Francisco De Carvalho Pereira (Dev - VFX)
+
 Romane Schreck (Artistic Direction- 2D - Animation)
+
 Sami Delvallée (Artistic Direction- 3D - SFX)
+
 Eve Cabanié (Artistic Direction- UI - Texturing)
